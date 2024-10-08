@@ -1,24 +1,14 @@
-import {View, Text, TextInput} from 'react-native';
-import React, {useState} from 'react';
-import CustomHeader from './App/Components/CustomHeader/CustomHeader';
+import {View, Text} from 'react-native';
+import React from 'react';
+import {Provider} from 'react-redux';
+import store from './App/Store/store';
+import Navigation from './App/Navigation/Navigation';
 
 const App = () => {
-  const [writtenText, setWrittenText] = useState('');
-  const onType = text => {
-    console.log('==========>', text);
-    setWrittenText(text);
-  };
-
   return (
-    <View>
-      <Text>App</Text>
-      <CustomHeader title={'HEADER'} />
-      <TextInput
-        onChangeText={onType}
-        placeholder={'TYPE HERE'}
-        value={writtenText}
-      />
-    </View>
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   );
 };
 
